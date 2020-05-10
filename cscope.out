@@ -1,4 +1,4 @@
-cscope 15 $HOME/Desktop/eos               0000071823
+cscope 15 $HOME/Desktop/eos_m               0000072533
 	@core/comm.c
 
 8 
@@ -2807,6 +2807,38 @@ _os_m≠_èbÀ
 
 	@core/sync.c
 
+2 * 
+	gFûíame
+: 
+c‹e
+/
+sync
+.
+c
+
+
+4 * 
+Auth‹
+: 
+wsyoo
+, 
+	gRTOSLab
+. 
+	gSNU
+.
+
+6 * 
+	gDes¸ùti⁄
+: 
+£m≠h‹e
+, 
+c⁄dôi⁄
+ 
+v¨übÀ
+ 
+	gm™agemít
+.
+
 8 
 	~<c‹e/eos.h
 >
@@ -3040,10 +3072,46 @@ sblock_size
 );
 
 27 
+èsk
+->
+¥i‹ôy
+ =Öriority;
+
+28 
+_os_node_t
+ *
+√w_node
+ = 
+	`mÆloc
+((_os_node_t));
+
+29 
+√w_node
+->
+±r_d©a
+ = (*)
+èsk
+;
+
+30 
+√w_node
+->
+¥i‹ôy
+ =Öriority;
+
+31 
+	`_os_add_node_èû
+(
+_os_ªady_queue
+, 
+√w_node
+);
+
+32 
 	}
 }
 
-29 
+34 
 öt32u_t
  
 	$eos_de°roy_èsk
@@ -3053,32 +3121,80 @@ eos_tcb_t
 èsk
 ) {
 
-30 
+35 
 	}
 }
 
-32 
+37 
 	$eos_scheduÀ
 () {
 
-33 if(
+38 if(
 _os_cuºít_èsk
  =
 NULL
 ) {
 
-37 
+39 
+_os_node_t
+ *
+node
+ = *
+_os_ªady_queue
+;
+
+40 
+_os_cuºít_èsk
+ = (
+eos_tcb_t
+*)(
+node
+->
+±r_d©a
+);
+
+41 
+	`_os_ªmove_node
+(
+_os_ªady_queue
+, 
+node
+);
+
+42 
+	`‰ì
+(
+node
+);
+
+44 
+	`_os_ª°‹e_c⁄ãxt
+(
+_os_cuºít_èsk
+->
+•
+);
+
+48 
+	}
+}
+
+50 
 eos_tcb_t
  *
-	`eos_gë_cuºít_èsk
+	$eos_gë_cuºít_èsk
 () {
 
-38  
+51  
 _os_cuºít_èsk
 ;
 
-41 
-	`eos_ch™ge_¥i‹ôy
+52 
+	}
+}
+
+54 
+	$eos_ch™ge_¥i‹ôy
 (
 eos_tcb_t
  *
@@ -3089,18 +3205,26 @@ eos_tcb_t
 ¥i‹ôy
 ) {
 
-44 
+55 
+	}
+}
+
+57 
 öt32u_t
  
-	`eos_gë_¥i‹ôy
+	$eos_gë_¥i‹ôy
 (
 eos_tcb_t
  *
 èsk
 ) {
 
-47 
-	`eos_£t_≥riod
+58 
+	}
+}
+
+60 
+	$eos_£t_≥riod
 (
 eos_tcb_t
  *
@@ -3111,71 +3235,91 @@ eos_tcb_t
 ≥riod
 ){
 
-50 
+61 
+	}
+}
+
+63 
 öt32u_t
  
-	`eos_gë_≥riod
+	$eos_gë_≥riod
 (
 eos_tcb_t
  *
 èsk
 ) {
 
-53 
+64 
+	}
+}
+
+66 
 öt32u_t
  
-	`eos_su•íd_èsk
+	$eos_su•íd_èsk
 (
 eos_tcb_t
  *
 èsk
 ) {
 
-56 
+67 
+	}
+}
+
+69 
 öt32u_t
  
-	`eos_ªsume_èsk
+	$eos_ªsume_èsk
 (
 eos_tcb_t
  *
 èsk
 ) {
 
-59 
-	`eos_¶ìp
+70 
+	}
+}
+
+72 
+	$eos_¶ìp
 (
 öt32u_t
  
 tick
 ) {
 
-62 
-	`_os_öô_èsk
+73 
+	}
+}
+
+75 
+	$_os_öô_èsk
 () {
 
-63 
+76 
 	`PRINT
 ("initializingÅask module.\n");
 
-66 
+79 
 _os_cuºít_èsk
  = 
 NULL
 ;
 
-69 
+82 
 öt32u_t
  
 i
 ;
 
-70 
+83 
 i
  = 0; i < 
 LOWEST_PRIORITY
 ; i++) {
 
-71 
+84 
 _os_ªady_queue
 [
 i
@@ -3183,16 +3327,24 @@ i
 NULL
 ;
 
-75 
-	`_os_waô
+86 
+	}
+}
+
+88 
+	$_os_waô
 (
 _os_node_t
  **
 waô_queue
 ) {
 
-78 
-	`_os_wakeup_sögÀ
+89 
+	}
+}
+
+91 
+	$_os_wakeup_sögÀ
 (
 _os_node_t
  **
@@ -3203,8 +3355,12 @@ waô_queue
 queue_ty≥
 ) {
 
-81 
-	`_os_wakeup_Æl
+92 
+	}
+}
+
+94 
+	$_os_wakeup_Æl
 (
 _os_node_t
  **
@@ -3215,11 +3371,19 @@ waô_queue
 queue_ty≥
 ) {
 
-84 
-	`_os_wakeup_¶ìpög_èsk
+95 
+	}
+}
+
+97 
+	$_os_wakeup_¶ìpög_èsk
 (*
 ¨g
 ) {
+
+98 
+	}
+}
 
 	@core/timer.c
 

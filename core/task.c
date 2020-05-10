@@ -25,14 +25,34 @@ int32u_t eos_create_task(eos_tcb_t *task, addr_t sblock_start, size_t sblock_siz
 	PRINT("task: 0x%x, priority: %d\n", (int32u_t)task, priority);
 	task->sp = _os_create_context(sblock_start, sblock_size, entry, arg);
 	task->priority = priority;
+	_os_node_t *new_node = malloc(sizeof(_os_node_t));
+	new_node->ptr_data = (void *)task;
+	new_node->priority = priority;
+	_os_add_node_tail(_os_ready_queue, new_node);
 }
 
 int32u_t eos_destroy_task(eos_tcb_t *task) {
 }
 
 void eos_schedule() {
-	if(_os_current_task == NULL) {
+	if(_os_current_task != NULL)
+	{
+		addr_t sp = _os_save_context();
+		if(sp == NULL) return;
 
+		_os_current_task->sp = sp;
+		_os_node_t *new_node = malloc(sizeof(_os_node_t));
+		new_node->ptr_data = (void *)_os_current_task;
+		new_node->priority = _os_current_task->priority;
+		_os_add_node_priority(_os_ready_queue, new_node);
+	}
+
+	_os_node_t *node = *_os_ready_queue;
+	_os_current_task = (eos_tcb_t*)(node->ptr_data);
+	_os_remove_node(_os_ready_queue, node);
+	free(node);
+		
+	_os_restore_context(_os_current_task->sp);
 }
 
 eos_tcb_t *eos_get_current_task() {
