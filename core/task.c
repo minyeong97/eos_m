@@ -28,7 +28,7 @@ int32u_t eos_create_task(eos_tcb_t *task, addr_t sblock_start, size_t sblock_siz
 	_os_node_t *new_node = malloc(sizeof(_os_node_t));
 	new_node->ptr_data = (void *)task;
 	new_node->priority = priority;
-	_os_add_node_tail(_os_ready_queue, new_node);
+	_os_add_node_priority(_os_ready_queue, new_node);
 }
 
 int32u_t eos_destroy_task(eos_tcb_t *task) {

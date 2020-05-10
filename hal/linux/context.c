@@ -4,6 +4,16 @@
 
 typedef struct _os_context {
 	/* low address */
+	int32u_t edi;
+	int32u_t esi;
+	int32u_t ebx;
+	int32u_t edx;
+	int32u_t ecx;
+	int32u_t eax;
+	int32u_t eflags;
+	int32u_t entry;
+	int32u_t return_addr;
+	int32u_t arg;
 	/* high address */	
 } _os_context_t;
 
@@ -17,19 +27,19 @@ void print_context(addr_t context) {
 }
 
 addr_t _os_create_context(addr_t stack_base, size_t stack_size, void (*entry)(void *), void *arg) {
-	int32u_t *ptr = stack_base + stack_size / 4 - 1;
-	*ptr = arg;
-	*(ptr - 0) = NULL;
-	*(ptr - 1) = entry;
-	*(ptr - 2) = 0;
-	*(ptr - 3) = NULL;
-	*(ptr - 4) = NULL;
-	*(ptr - 5) = NULL;
-	*(ptr - 6) = NULL;
-	*(ptr - 7) = NULL;
-	*(ptr - 8) = NULL;
+	_os_context_t *context = (_os_context_t*)stack_base;
+	context->arg = arg;
+	context->return_addr = NULL;
+	context->entry = entry;
+	context->eflags = 0;
+	context->eax = NULL;
+	context->ecx = NULL;
+	context->ebx = NULL;
+	context->edx = NULL;
+	context->esi = NULL;
+	context->edi = NULL;
 
-	return (addr_t)(ptr - 8);
+	return (addr_t)(&(context->edi));
 }
 
 void _os_restore_context(addr_t sp) {
