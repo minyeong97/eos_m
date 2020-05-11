@@ -53,6 +53,7 @@ void _os_restore_context(addr_t sp) {
 		popl %%ecx;\
 		popl %%eax;\
 		popl %0;\
+		movl $0, %%eax;\
 		ret;"
 		:"=m"(_eflags):"m"(sp));
 }
@@ -72,7 +73,6 @@ addr_t _os_save_context() {
 		pushl (%%ebp);\
 		movl %%esp, %%eax;\
 		addl $8, %%eax;\
-	resume_eip:\
-		movl $0, %%eax;"
+	resume_eip:"
 		:: "r"(_eflags));
 }
