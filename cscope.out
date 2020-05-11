@@ -1,4 +1,4 @@
-cscope 15 $HOME/Desktop/eos_m               0000073143
+cscope 15 $HOME/Projects/eos_m               0000073007
 	@core/comm.c
 
 8 
@@ -2807,38 +2807,6 @@ _os_m≠_èbÀ
 
 	@core/sync.c
 
-2 * 
-	gFûíame
-: 
-c‹e
-/
-sync
-.
-c
-
-
-4 * 
-Auth‹
-: 
-wsyoo
-, 
-	gRTOSLab
-. 
-	gSNU
-.
-
-6 * 
-	gDes¸ùti⁄
-: 
-£m≠h‹e
-, 
-c⁄dôi⁄
- 
-v¨übÀ
- 
-	gm™agemít
-.
-
 8 
 	~<c‹e/eos.h
 >
@@ -4676,7 +4644,7 @@ STACK_SIZE
 ¥öt_numbî
 , 
 NULL
-, 0)
+, 0);
 
 31 
 	`eos_¸óã_èsk
@@ -4690,7 +4658,7 @@ STACK_SIZE
 ¥öt_Æphabë
 , 
 NULL
-, 0)
+, 0);
 
 32 
 	}
