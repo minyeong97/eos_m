@@ -27,7 +27,7 @@ void print_context(addr_t context) {
 }
 
 addr_t _os_create_context(addr_t stack_base, size_t stack_size, void (*entry)(void *), void *arg) {
-	_os_context_t *context = (_os_context_t*)stack_base;
+	_os_context_t *context = (_os_context_t*)(stack_base + stack_size/4 + 8);
 	context->arg = arg;
 	context->return_addr = NULL;
 	context->entry = entry;
@@ -39,7 +39,7 @@ addr_t _os_create_context(addr_t stack_base, size_t stack_size, void (*entry)(vo
 	context->esi = NULL;
 	context->edi = NULL;
 
-	return (addr_t)(&(context->edi));
+	return (addr_t)(context);
 }
 
 void _os_restore_context(addr_t sp) {
