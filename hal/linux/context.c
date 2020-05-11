@@ -72,6 +72,7 @@ addr_t _os_save_context() {
 		pushl (%%ebp);\
 		movl %%esp, %%eax;\
 		addl $8, %%eax;\
-	resume_eip:"	
+	resume_eip:\
+		movl $0, %%eax;"
 		:: "r"(_eflags));
 }
