@@ -1,4 +1,4 @@
-cscope 15 $HOME/Projects/eos_m               0000073007
+cscope 15 $HOME/Projects/eos_m               0000073032
 	@core/comm.c
 
 8 
@@ -3679,9 +3679,11 @@ size_t
 _os_cÚ‹xt_t
  *
 cÚ‹xt
- = (_os_cÚ‹xt_t*)
+ = (_os_cÚ‹xt_t*)(
 ¡ack_ba£
-;
+ + 
+¡ack_size
+/4 + 8);
 
 31 
 cÚ‹xt
@@ -3759,11 +3761,9 @@ NULL
 
 42  (
 addr_t
-)(&(
+)(
 cÚ‹xt
-->
-edi
-));
+);
 
 43 
 	}
@@ -3794,29 +3794,30 @@ __asm__
  %%ecx;\
  %%eax;\
  %0;\
+ $0, %%eax;\
 ;"
 
-57 :"=m"(
+58 :"=m"(
 _eæags
 ):"m"(
 ¥
 ));
 
-58 
+59 
 	}
 }
 
-60 
+61 
 addr_t
  
 	$_os_§ve_cÚ‹xt
 () {
 
-61 
+62 
 _eæags
 ;
 
-62 
+63 
 __asm__
  
 	`__vÞ©že__
@@ -3835,11 +3836,11 @@ __asm__
  $8, %%eax;\
 _eip:"
 
-76 :: "r"(
+77 :: "r"(
 _eæags
 ));
 
-77 
+78 
 	}
 }
 

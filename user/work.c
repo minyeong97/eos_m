@@ -10,7 +10,7 @@ eos_tcb_t tcb2; // tcb for task2
 void print_number() {
 	int i = 0;
 	while(++i) {
-		printf("%d", i);
+		//printf("%d", i);
 		eos_schedule(); // 태스크 1 수행 중단, 태스크 2 수행 재개
 		if (i == 20) { i = 0; }
 	}
@@ -20,7 +20,7 @@ void print_number() {
 void print_alphabet() {
 	int i = 96;
 	while(++i) {
-		printf("%c", i);
+		//printf("%c", i);
 		eos_schedule(); // 태스크 2 수행 중단, 태스크 1 수행 재개
 		if (i == 122) { i = 96; }
 	}
